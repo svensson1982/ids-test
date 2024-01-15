@@ -6,16 +6,15 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/i-ds.umd.cjs",
-  "module": "./dist/i-ds-lib.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/ids-lib.js",
-      "require": "./dist/ids-lib.umd.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./style.css": "./dist/style.css"
   },
-  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
