@@ -1,6 +1,6 @@
 {
   "name": "@baller/i-ds",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "i-ds",
   "private": false,
   "type": "module",
@@ -29,9 +29,8 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "vite-plugin-dts": "^3.7.1",
-    "vue": "^3.3.11"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.7",
