@@ -1,11 +1,12 @@
 {
   "name": "@baller/i-ds",
   "version": "1.0.2",
+  "description": "i-ds",
   "private": false,
   "type": "module",
   "files": [
     "dist",
-    "src/components/index.d.ts"
+    "src"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -18,12 +19,18 @@
     },
     "./style.css": "./dist/style.css"
   },
+  "keywords": [
+    "i-ds",
+    "vue",
+    "typescript"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "vite-plugin-dts": "^3.7.1",
     "vue": "^3.3.11"
   },
   "devDependencies": {
