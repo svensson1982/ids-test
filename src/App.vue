@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-import IdsButton from './components/IdsButton.vue'
-  import { ComputerDesktopIcon } from '@heroicons/vue/24/outline';
+  import IdsButton from './components/IdsButton.vue'
+ 
   const darkText = ref('lightMode');
   function drMode() {
     if (document.documentElement.classList.contains('dark')) {
@@ -25,7 +25,6 @@ import IdsButton from './components/IdsButton.vue'
     <IdsButton size="spacious" variant="error" >Spacious Error</IdsButton>
     <IdsButton size="spacious" variant="success" >
       Spacious Success
-      <ComputerDesktopIcon class="w-10px h-10px text-gray-200 cursor-pointer hover:opacity-60" />
     </IdsButton>
     <IdsButton size="spacious" variant="warning" >Spacious Warning</IdsButton>
     <IdsButton mode="outlined" size="spacious" variant="primary" >outline</IdsButton>

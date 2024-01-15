@@ -37,14 +37,10 @@ const buttonStyle = reactive({
   //active
   activeBackground: `var(--comp-buttons-${props.mode}-color-bg-${props.variant}-pressed)`,
   activeBorder: `var(--comp-buttons-size-${props.size}-border, 1px) solid var(--comp-buttons-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
-  
-
 });
-
 </script>
 
 <template>
-  <!-- :class="[size, variant]" -->
   <button :type="type" :class="[size, 'ids-button']">
   <slot></slot>
   </button>
