@@ -1,9 +1,9 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import IdsButton from './components/IdsButton.vue'
-  import IdsChip from './components/IdsChip.vue';
-  import { BeakerIcon } from '@heroicons/vue/24/solid'
-  import { MoonIcon } from "@heroicons/vue/24/outline"
+  // import IdsChip from './components/IdsChip.vue';
+  // import { BeakerIcon } from '@heroicons/vue/24/solid'
+  // import { MoonIcon } from "@heroicons/vue/24/outline"
 
   const darkText = ref('lightMode');
   function drMode() {
@@ -15,6 +15,27 @@
       darkText.value = 'darkMode';
     }
   }
+
+  type ButtonOptions = {
+  mode?: "filled" | "outlined" | "text",
+  size?: "compact" | "comfortable" | "spacious",
+  variant?: "primary" | "secondary" | "brand" | "error" | "success" | "warning" | "light" | "dark",
+  };
+
+  const allModes: Array<ButtonOptions["mode"]> = ["filled", "outlined", "text"];
+  const allSizes: Array<ButtonOptions["size"]> = ["compact", "comfortable", "spacious"];
+  const allVariants: Array<ButtonOptions["variant"]> = ["primary", "secondary", "brand", "error", "success", "warning", "light", "dark"];
+
+const allOptions: ButtonOptions[] = [];
+
+for (const mode of allModes) {
+  for (const size of allSizes) {
+    for (const variant of allVariants) {
+      const options: ButtonOptions = { mode, size, variant };
+      allOptions.push(options);
+    }
+  }
+}
 </script>
 
 <template>
@@ -22,25 +43,20 @@
   <!-- <ids-card> -->
   <div class="test">
     <p class="title">Buttons</p>
-    <IdsButton size="compact" variant="primary" >Compact Primary</IdsButton>
-    <IdsButton size="comfortable" variant="secondary" >Comfortable Secondary</IdsButton>
-    <IdsButton size="spacious" variant="brand" >Spacious Brand</IdsButton>
-    <IdsButton size="spacious" variant="error" >Spacious Error</IdsButton>
-    <IdsButton size="spacious" variant="success" :trailing-icon="BeakerIcon" :leading-icon="MoonIcon">
-      Spacious Success      
+    <IdsButton v-for="(option, index) in allOptions" :key="index" :size="option.size" :variant="option.variant" :mode="option.mode">
+      {{option.mode + ' ' + option.variant + ' ' + option.size}} button
     </IdsButton>
-    <IdsButton size="spacious" variant="warning" >Spacious Warning</IdsButton>
-    <IdsButton mode="outlined" size="spacious" variant="primary" >outline</IdsButton>
-    <IdsButton mode="text" size="comfortable" variant="success">text</IdsButton>
   </div>
-  <div class="test">
+  <!-- <div class="test">
     <p class="title">Chips</p>
     <IdsChip >Label</IdsChip>
     <IdsChip >Comfortable Primary</IdsChip>
     <IdsChip size="compact" mode="filled" variant="success">Compact Success</IdsChip>
-  </div>
+  </div> -->
 <!-- </ids-card> -->
 </template>
+
+
 
 <style>
 @import './styles/ids.scss';
