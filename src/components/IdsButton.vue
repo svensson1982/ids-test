@@ -1,11 +1,14 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+
 const props = withDefaults(defineProps<{
   type?: "submit" | "button" | "reset",
   mode?: "filled" | "outlined" | "text",
   size?: "compact" | "comfortable" | "spacious",
   variant?: "primary" | "secondary" | "brand" | "error" | "success" | "warning" | "light" | "dark",
+  leadingIcon?: Object | undefined,
+  trailingIcon?: Object | undefined,
 }>(), {
   type: 'button',
   mode: 'filled',
@@ -42,7 +45,9 @@ const buttonStyle = reactive({
 
 <template>
   <button :type="type" :class="[size, 'ids-button']">
-  <slot></slot>
+    <component :is="props.leadingIcon" class="w-5 h-5"></component>
+    <slot></slot>
+    <component :is="props.trailingIcon"  class="w-5 h-5"></component>
   </button>
 </template>
 
@@ -50,6 +55,8 @@ const buttonStyle = reactive({
 
 @mixin common {
   flex-shrink: 0;
+  font-weight: 700;
+  width: fit-content;
   align-items: center;
   display: inline-flex;
   justify-content: center;
@@ -58,6 +65,8 @@ const buttonStyle = reactive({
 //sizes
 .compact {
   @include common;
+  font-size: 12px;
+  line-height: 16px;
   gap: var(--comp-buttons-size-compact-gap, 4px);
   height: var(--comp-buttons-size-compact-height, 24px);
   padding: var(--comp-buttons-size-compact-padding-y, 6px) var(--comp-buttons-size-compact-padding-x, 8px);
@@ -65,6 +74,8 @@ const buttonStyle = reactive({
 
 .comfortable {
   @include common;
+  font-size: 14px;
+  line-height: 20px;
   gap: var(--comp-buttons-size-comfortable-gap, 8px);
   height: var(--comp-buttons-size-comfortable-height, 40px);
   padding: var(--comp-buttons-size-comfortable-padding-y, 10px) var(--comp-buttons-size-comfortable-padding-x, 20px);
@@ -72,6 +83,8 @@ const buttonStyle = reactive({
 
 .spacious {
   @include common;
+  font-size: 18px;
+  line-height: 24px;
   gap: var(--comp-buttons-size-spacious-gap, 8px);
   height: var(--comp-buttons-size-spacious-height, 56px);
   padding: var(--comp-buttons-size-spacious-padding-y, 16px) var(--comp-buttons-size-spacious-padding-x, 24px);
@@ -106,6 +119,13 @@ const buttonStyle = reactive({
     color: v-bind('buttonStyle.disabledColor');
     border: v-bind('buttonStyle.disabledBorder');
     background: v-bind('buttonStyle.disabledBackground');
+  }
+
+  .w-5 {
+    width: 20px;
+  }
+  .h-5 {
+    height: 20px;
   }
 }
 

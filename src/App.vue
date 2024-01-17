@@ -1,7 +1,10 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import IdsButton from './components/IdsButton.vue'
- 
+  import IdsChip from './components/IdsChip.vue';
+  import { BeakerIcon } from '@heroicons/vue/24/solid'
+  import { MoonIcon } from "@heroicons/vue/24/outline"
+
   const darkText = ref('lightMode');
   function drMode() {
     if (document.documentElement.classList.contains('dark')) {
@@ -18,17 +21,23 @@
   <IdsButton size="comfortable" variant="secondary" @click="drMode" style="margin-bottom: 10px;">{{ darkText }}</IdsButton>
   <!-- <ids-card> -->
   <div class="test">
-    <IdsButton size="compact" variant="primary" >
-      Compact Primary</IdsButton>
+    <p class="title">Buttons</p>
+    <IdsButton size="compact" variant="primary" >Compact Primary</IdsButton>
     <IdsButton size="comfortable" variant="secondary" >Comfortable Secondary</IdsButton>
     <IdsButton size="spacious" variant="brand" >Spacious Brand</IdsButton>
     <IdsButton size="spacious" variant="error" >Spacious Error</IdsButton>
-    <IdsButton size="spacious" variant="success" >
-      Spacious Success
+    <IdsButton size="spacious" variant="success" :trailing-icon="BeakerIcon" :leading-icon="MoonIcon">
+      Spacious Success      
     </IdsButton>
     <IdsButton size="spacious" variant="warning" >Spacious Warning</IdsButton>
     <IdsButton mode="outlined" size="spacious" variant="primary" >outline</IdsButton>
     <IdsButton mode="text" size="comfortable" variant="success">text</IdsButton>
+  </div>
+  <div class="test">
+    <p class="title">Chips</p>
+    <IdsChip >Label</IdsChip>
+    <IdsChip >Comfortable Primary</IdsChip>
+    <IdsChip size="compact" mode="filled" variant="success">Compact Success</IdsChip>
   </div>
 <!-- </ids-card> -->
 </template>
@@ -39,5 +48,12 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 </style>
