@@ -3,7 +3,13 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
 import { fileURLToPath } from 'url';
-//import commonjs from '@rollup/plugin-commonjs';
+
+
+const filesNeedToExclude = ["src/demo/**", "src/pluggables/Comp2.vue"];
+
+const filesPathToExclude = filesNeedToExclude.map((src) => {
+  return fileURLToPath(new URL(src, import.meta.url));
+});
 
 // https://vitejs.dev/config/
 export default defineConfig({

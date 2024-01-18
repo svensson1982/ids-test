@@ -10,10 +10,6 @@
     ],
     "skipLibCheck": true,
     "outDir": "dist",
-    "exclude": [
-      "src/App.vue",
-      "src/main.ts"
-    ],
     "declaration": true,
     /* Bundler mode */
     "moduleResolution": "node",
@@ -32,6 +28,11 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+  ],
+  "exclude": [
+    "src/App.vue",
+    "src/demo/**",
+    "src/main.ts"
   ],
   "references": [
     {

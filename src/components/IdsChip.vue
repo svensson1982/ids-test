@@ -16,7 +16,6 @@ const props = withDefaults(defineProps<{
 
 const chipStyle = reactive({
   //enabled
-  //opacity: `var(--comp-chips-size-${props.size}-border, 1)`,
   color: `var(--comp-chips-${props.mode}-color-bg-fg-${props.variant}-enabled)`,
   borderRadius: `var(--comp-chips-size-${props.size}-border-radius, 6px)`,
   background: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-enabled)`,
