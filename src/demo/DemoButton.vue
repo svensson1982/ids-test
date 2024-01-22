@@ -1,14 +1,18 @@
 <template>
  <div class="demo">
     <h2>Buttons</h2>
-    <IdsButton v-for="(option, index) in allOptions" :key="index" :size="option.size" :variant="option.variant" :mode="option.mode">
+    <IdsButton v-for="(option, index) in allOptions" :key="index" :size="option.size" 
+    :variant="option.variant" :mode="option.mode" :leading-icon="BoltIcon" :trailing-icon="BeakerIcon" 
+    :id="`${option.mode}-${option.variant}-${option.size}-button`">
       {{option.mode + ' ' + option.variant + ' ' + option.size}} button
     </IdsButton>
   </div>
 </template>
 
 <script setup lang="ts">
-import IdsButton  from '../components/IdsButton.vue';
+  import { BoltIcon } from '@heroicons/vue/24/solid'
+  import { BeakerIcon } from '@heroicons/vue/24/solid'
+  import IdsButton  from '../components/IdsButton.vue';
     type ButtonOptions = {
   mode?: "filled" | "outlined" | "text",
   size?: "compact" | "comfortable" | "spacious",

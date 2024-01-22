@@ -1,14 +1,18 @@
 <template>
  <div class="demo">
     <h2>Chips</h2>
-    <IdsChip v-for="(option, index) in allOptions" :key="index" :size="option.size" :variant="option.variant" :mode="option.mode">
+    <IdsChip v-for="(option, index) in allOptions" :key="index" :size="option.size" 
+    :variant="option.variant" :mode="option.mode" :leading-icon="BoltIcon" :trailing-icon="BeakerIcon"
+    :id="`${option.mode}-${option.variant}-${option.size}-chip`">
       {{option.mode + ' ' + option.variant + ' ' + option.size}} chip
     </IdsChip>
   </div>
 </template>
 
 <script setup lang="ts">
-import IdsChip  from '../components/IdsChip.vue';
+  import { BoltIcon } from '@heroicons/vue/24/solid'
+  import { BeakerIcon } from '@heroicons/vue/24/solid'
+  import IdsChip  from '../components/IdsChip.vue';
     type ChipOptions = {
   mode?: "filled" | "outlined" ,
   size?: "compact" | "comfortable",

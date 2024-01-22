@@ -32,27 +32,40 @@ const buttonStyle = reactive({
   focusedBackground: `var(--comp-buttons-${props.mode}-color-bg-${props.variant}-focused)`,
   focusedBorder: `var(--comp-buttons-size-${props.size}-border, 1px) solid var(--comp-buttons-${props.mode}-color-border-${props.variant}-focused, rgba(255, 255, 255, 0.00))`,
   
+  //active
+  activeBackground: `var(--comp-buttons-${props.mode}-color-bg-${props.variant}-pressed)`,
+  activeBorder: `var(--comp-buttons-size-${props.size}-border, 1px) solid var(--comp-buttons-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
+
   //disabled
   disabledColor: `var(--comp-buttons-${props.mode}-color-fg-${props.variant}-disabled)`,
   disabledBackground: `var(--comp-buttons-${props.mode}-color-bg-${props.variant}-disabled)`,
   disabledBorder: `var(--comp-buttons-size-${props.size}-border, 1px) solid var(--comp-buttons-${props.mode}-color-border-${props.variant}-disabled, rgba(255, 255, 255, 0.00))`,
 
-  //active
-  activeBackground: `var(--comp-buttons-${props.mode}-color-bg-${props.variant}-pressed)`,
-  activeBorder: `var(--comp-buttons-size-${props.size}-border, 1px) solid var(--comp-buttons-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
+  //icon sizes
+  iconWidth: `var(--comp-buttons-size-${props.size}-icon)`,
+  iconHeight: `var(--comp-buttons-size-${props.size}-icon)`,
 });
 
 </script>
 
 <template>
   <button :type="type" :class="[size, 'ids-button']">
-    <component :is="props.leadingIcon" class="w-5 h-5"></component>
+    <component :is="props.leadingIcon" class="icon-size"></component>
     <slot></slot>
-    <component :is="props.trailingIcon"  class="w-5 h-5"></component>
+    <component :is="props.trailingIcon" class="icon-size"></component>
   </button>
 </template>
 
 <style scoped lang="scss">
+//icon sizes
+.icon-size {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: v-bind('buttonStyle.iconWidth');
+  height: v-bind('buttonStyle.iconHeight');
+}
 
 @mixin common {
   flex-shrink: 0;
@@ -120,13 +133,5 @@ const buttonStyle = reactive({
     border: v-bind('buttonStyle.disabledBorder');
     background: v-bind('buttonStyle.disabledBackground');
   }
-
-  .w-5 {
-    width: 20px;
-  }
-  .h-5 {
-    height: 20px;
-  }
 }
-
 </style>

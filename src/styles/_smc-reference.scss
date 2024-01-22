@@ -126,6 +126,7 @@
   --smc-reference-container-color-surface-border-lighter-10: var(--smc-colors-surface-lighter-10);
   --smc-reference-container-color-surface-border-transparent: var(--smc-reference-opacity-transparent);
   --smc-reference-container-color-surface-fg-darker-10: var(--smc-colors-surface-darker-10);
+  --smc-reference-container-color-surface-fg-darker-50: var(--smc-colors-surface-darker-50);
   --smc-reference-container-color-surface-fg-darker-60: var(--smc-colors-surface-darker-60);
   --smc-reference-container-color-surface-fg-darker-70: var(--smc-colors-surface-darker-70);
   --smc-reference-container-color-surface-fg-darker-95: var(--smc-colors-surface-darker-95);
@@ -183,6 +184,9 @@
   /* numbers */
   --smc-reference-container-border-radius-2xs: var(--base-dimension-40);
   --smc-reference-container-border-radius-xs: var(--base-dimension-80);
+  --smc-reference-container-border-radius-md: var(--base-dimension-160);
+  --smc-reference-container-border-radius-lg: var(--base-dimension-240);
+  --smc-reference-container-border-radius-xl: var(--base-dimension-320);
   --smc-reference-container-border-radius-full: var(--base-dimension-10000);
   --smc-reference-container-border-width-sm: var(--base-dimension-10);
   --smc-reference-container-effects-tw-shadow-blur-xxs: var(--base-dimension-20);
@@ -212,9 +216,12 @@
   --smc-reference-container-focused-outline-size-default: var(--base-dimension-30);
   --smc-reference-container-gap-4: var(--base-dimension-40);
   --smc-reference-container-gap-8: var(--base-dimension-80);
+  --smc-reference-container-gap-16: var(--base-dimension-160);
+  --smc-reference-container-gap-24: var(--base-dimension-240);
   --smc-reference-container-icons-nested-compact: var(--smc-reference-icon-xs);
   --smc-reference-container-icons-nested-comfortable: var(--smc-reference-icon-md);
   --smc-reference-container-icons-nested-spacious: var(--smc-reference-icon-lg);
+  --smc-reference-container-padding-4: var(--base-dimension-40);
   --smc-reference-container-padding-6: var(--base-dimension-60);
   --smc-reference-container-padding-8: var(--base-dimension-80);
   --smc-reference-container-padding-10: var(--base-dimension-100);
@@ -224,7 +231,12 @@
   --smc-reference-container-size-height-24: var(--base-dimension-240);
   --smc-reference-container-size-height-32: var(--base-dimension-320);
   --smc-reference-container-size-height-40: var(--base-dimension-400);
+  --smc-reference-container-size-height-44: var(--base-dimension-440);
   --smc-reference-container-size-height-56: var(--base-dimension-560);
+  --smc-reference-container-size-width-24: var(--base-dimension-240);
+  --smc-reference-container-size-width-40: var(--base-dimension-400);
+  --smc-reference-container-size-width-56: var(--base-dimension-560);
+  --smc-reference-container-spacing-0: var(--base-dimension-0);
   --smc-reference-container-spacing-4: var(--base-dimension-40);
   --smc-reference-container-spacing-6: var(--base-dimension-60);
   --smc-reference-container-spacing-8: var(--base-dimension-80);

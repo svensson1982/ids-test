@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<{
 
 const chipStyle = reactive({
   //enabled
-  color: `var(--comp-chips-${props.mode}-color-bg-fg-${props.variant}-enabled)`,
+  color: `var(--comp-chips-${props.mode}-color-fg-${props.variant}-enabled)`,
   borderRadius: `var(--comp-chips-size-${props.size}-border-radius, 6px)`,
   background: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-enabled)`,
   border: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-enabled, rgba(255, 255, 255, 0.00))`,
@@ -30,27 +30,40 @@ const chipStyle = reactive({
   focusedBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-focused, rgba(255, 255, 255, 0.00))`,
   focusBorderRadius: `var(--comp-chips-size-${props.size}-border-radius, 6px)`,
   
+  //active
+  activeBackground: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-pressed)`,
+  activeBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
+
   //disabled
   disabledColor: `var(--comp-chips-${props.mode}-color-fg-${props.variant}-disabled)`,
   disabledBackground: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-disabled)`,
   disabledBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-disabled, rgba(255, 255, 255, 0.00))`,
 
-  //active
-  activeBackground: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-pressed)`,
-  activeBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
+  //icon sizes
+  iconWidth: `var(--comp-chips-size-${props.size}-icon)`,
+  iconHeight: `var(--comp-chips-size-${props.size}-icon)`,
 });
 </script>
 
 <template>
   <button :class="[size, 'ids-chip']" type="button">
-    <component :is="props.leadingIcon" class="w-5 h-5"></component>
+    <component :is="props.leadingIcon" class="icon-size"></component>
     <slot></slot>
-    <component :is="props.trailingIcon"  class="w-5 h-5"></component>
+    <component :is="props.trailingIcon"  class="icon-size"></component>
   </button>
 </template>
 
 <style scoped lang="scss">
+//icon sizes
+.icon-size {
+  gap: 16px;
+  display: flex;
+  align-items: flex-start;
+  width: v-bind('chipStyle.iconWidth');
+  height: v-bind('chipStyle.iconHeight');
+}
 
+//common
 @mixin common {
   flex-shrink: 0;  
   font-weight: 500;
@@ -109,6 +122,7 @@ const chipStyle = reactive({
     border: v-bind('chipStyle.disabledBorder');
     background: v-bind('chipStyle.disabledBackground');
   }
+}
 
   .w-5 {
     width: 20px;
@@ -116,6 +130,4 @@ const chipStyle = reactive({
   .h-5 {
     height: 20px;
   }
-}
-
 </style>

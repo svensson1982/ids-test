@@ -3,11 +3,13 @@
 <template>
   <nav>
     <button @click="showComponent(Button)">Buttons Component</button>
-    <button @click="showComponent(Chip)">Chips Component</button>
+    <button @click="showComponent(IconButton)">Icon Buttons Component (inProgress)</button>
+    <button @click="showComponent(Chip)">Chips Component (inProgress)</button>
+    <button @click="showComponent(Divider)">Divider Component</button>
   </nav>
   <section>
     <component :is="currentComponent" />
-  </section>
+  </section> 
     <!-- <IdsButton size="comfortable" variant="secondary" @click="drMode" style="margin-bottom: 10px;">{{ darkText }}</IdsButton> -->
 </template>
 
@@ -16,7 +18,7 @@
  //import { ref } from 'vue';
   //import IdsButton from './components/IdsButton.vue'
   // import IdsChip from './components/IdsChip.vue';
-  // import { BeakerIcon } from '@heroicons/vue/24/solid'
+
   // import { MoonIcon } from "@heroicons/vue/24/outline"
 
   // const darkText = ref('lightMode');
@@ -31,9 +33,11 @@
   // }
   
 
-import {  shallowRef } from 'vue';
-import Chip from "./DemoChip.vue"
-import Button from "./DemoButton.vue";
+  import { shallowRef } from 'vue';
+  import Chip from "./DemoChip.vue"
+  import Button from "./DemoButton.vue";
+  import IconButton from "./DemoIconButton.vue";
+  import Divider from "./DemoDivider.vue";
 
   const currentComponent = shallowRef(Button);
 
