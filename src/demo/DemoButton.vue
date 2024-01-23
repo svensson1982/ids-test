@@ -6,6 +6,12 @@
     :id="`${option.mode}-${option.variant}-${option.size}-button`">
       {{option.mode + ' ' + option.variant + ' ' + option.size}} button
     </IdsButton>
+    <h2 class="pt-2">Disabled Buttons</h2>
+    <IdsButton v-for="(option, index) in allOptions" :key="index" :size="option.size"  disabled
+    :variant="option.variant" :mode="option.mode" :leading-icon="BoltIcon" :trailing-icon="BeakerIcon" 
+    :id="`${option.mode}-${option.variant}-${option.size}-button`">
+      {{option.mode + ' ' + option.variant + ' ' + option.size}} button
+    </IdsButton>
   </div>
 </template>
 
@@ -47,5 +53,9 @@ p {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
+}
+
+.pt-2 {
+  padding-top: 2rem;
 }
 </style>

@@ -4,7 +4,7 @@
   <nav>
     <button @click="showComponent(Button)">Buttons Component</button>
     <button @click="showComponent(IconButton)">Icon Buttons Component (inProgress)</button>
-    <button @click="showComponent(Chip)">Chips Component (inProgress)</button>
+    <button @click="showComponent(Chip)">Chips Component</button>
     <button @click="showComponent(Divider)">Divider Component</button>
   </nav>
   <section>

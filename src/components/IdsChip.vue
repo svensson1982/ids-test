@@ -16,32 +16,32 @@ const props = withDefaults(defineProps<{
 
 const chipStyle = reactive({
   //enabled
-  color: `var(--comp-chips-${props.mode}-color-fg-${props.variant}-enabled)`,
-  borderRadius: `var(--comp-chips-size-${props.size}-border-radius, 6px)`,
-  background: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-enabled)`,
-  border: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-enabled, rgba(255, 255, 255, 0.00))`,
+  color: `var(--ids-comp-chips-${props.mode}-color-fg-${props.variant}-enabled)`,
+  borderRadius: `var(--ids-comp-chips-size-${props.size}-border-radius, 6px)`,
+  background: `var(--ids-comp-chips-${props.mode}-color-bg-${props.variant}-enabled)`,
+  border: `var(--ids-comp-chips-size-${props.size}-border, 1px) solid var(--ids-comp-chips-${props.mode}-color-border-${props.variant}-enabled, rgba(255, 255, 255, 0.00))`,
   
   //hovered
-  hoverBackground: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-hovered)`,
-  hoverBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-hovered, rgba(255, 255, 255, 0.00))`,
+  hoverBackground: `var(--ids-comp-chips-${props.mode}-color-bg-${props.variant}-hovered)`,
+  hoverBorder: `var(--ids-comp-chips-size-${props.size}-border, 1px) solid var(--ids-comp-chips-${props.mode}-color-border-${props.variant}-hovered, rgba(255, 255, 255, 0.00))`,
   
   //focused
-  focusedBackground: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-focused)`,
-  focusedBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-focused, rgba(255, 255, 255, 0.00))`,
-  focusBorderRadius: `var(--comp-chips-size-${props.size}-border-radius, 6px)`,
+  focusedBackground: `var(--ids-comp-chips-${props.mode}-color-bg-${props.variant}-focused)`,
+  focusedBorder: `var(--ids-comp-chips-size-${props.size}-border, 1px) solid var(--ids-comp-chips-${props.mode}-color-border-${props.variant}-focused, rgba(255, 255, 255, 0.00))`,
+  focusBorderRadius: `var(--ids-comp-chips-size-${props.size}-border-radius, 6px)`,
   
   //active
-  activeBackground: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-pressed)`,
-  activeBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
+  activeBackground: `var(--ids-comp-chips-${props.mode}-color-bg-${props.variant}-pressed)`,
+  activeBorder: `var(--ids-comp-chips-size-${props.size}-border, 1px) solid var(--ids-comp-chips-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
 
   //disabled
-  disabledColor: `var(--comp-chips-${props.mode}-color-fg-${props.variant}-disabled)`,
-  disabledBackground: `var(--comp-chips-${props.mode}-color-bg-${props.variant}-disabled)`,
-  disabledBorder: `var(--comp-chips-size-${props.size}-border, 1px) solid var(--comp-chips-${props.mode}-color-border-${props.variant}-disabled, rgba(255, 255, 255, 0.00))`,
+  disabledColor: `var(--ids-comp-chips-${props.mode}-color-fg-${props.variant}-disabled)`,
+  disabledBackground: `var(--ids-comp-chips-${props.mode}-color-bg-${props.variant}-disabled)`,
+  disabledBorder: `var(--ids-comp-chips-size-${props.size}-border, 1px) solid var(--ids-comp-chips-${props.mode}-color-border-${props.variant}-disabled, rgba(255, 255, 255, 0.00))`,
 
   //icon sizes
-  iconWidth: `var(--comp-chips-size-${props.size}-icon)`,
-  iconHeight: `var(--comp-chips-size-${props.size}-icon)`,
+  iconWidth: `var(--ids-comp-chips-size-${props.size}-icon)`,
+  iconHeight: `var(--ids-comp-chips-size-${props.size}-icon)`,
 });
 </script>
 
@@ -79,9 +79,9 @@ const chipStyle = reactive({
   font-size: 12px;
   line-height: 16px; 
   letter-spacing: 0.5px;
-  gap: var(--comp-chips-size-compact-gap, 4px);
-  height: var(--comp-chips-size-compact-height, 24px);
-  padding: var(--comp-chips-size-compact-padding-y, 8px) var(--comp-chips-size-compact-padding-x, 8px);
+  gap: var(--ids-comp-chips-size-compact-gap, 4px);
+  height: var(--ids-comp-chips-size-compact-height, 24px);
+  padding: var(--ids-comp-chips-size-compact-padding-y, 8px) var(--ids-comp-chips-size-compact-padding-x, 8px);
 }
 
 .comfortable {
@@ -89,9 +89,9 @@ const chipStyle = reactive({
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
-  gap: var(--comp-chips-size-comfortable-gap, 8px);
-  height: var(--comp-chips-size-comfortable-height, 32px);
-  padding: var(--comp-chips-size-comfortable-padding-y, 6px) var(--comp-chips-size-comfortable-padding-x, 20px);
+  gap: var(--ids-comp-chips-size-comfortable-gap, 8px);
+  height: var(--ids-comp-chips-size-comfortable-height, 32px);
+  padding: var(--ids-comp-chips-size-comfortable-padding-y, 6px) var(--ids-comp-chips-size-comfortable-padding-x, 20px);
 }
 
 //variants
@@ -110,7 +110,7 @@ const chipStyle = reactive({
     border: v-bind('chipStyle.focusedBorder');
     background: v-bind('chipStyle.focusedBackground');
     border-radius: v-bind('chipStyle.focusBorderRadius');
-    outline:  var(--comp-chips-focused-outline-size-outline, 3px) solid var(--base-color-dark, rgba(0, 0, 0, 1));
+    outline:  var(--ids-comp-chips-focused-outline-size-outline, 3px) solid var(--base-color-dark, rgba(0, 0, 0, 1));
   }
   &:active {
     border: v-bind('chipStyle.activeBorder');
