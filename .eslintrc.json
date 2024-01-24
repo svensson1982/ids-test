@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "plugin:vue/base",
+    "plugin:vue/essential",
+    "plugin:vue/vue3-recommended"
+  ],
+  "ignorePatterns": [
+    "dist/**",
+    "script/**",
+    "node_modules/**"
+  ]
+}

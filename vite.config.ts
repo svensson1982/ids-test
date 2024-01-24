@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
 import { fileURLToPath } from 'url';
-
+import path from 'path';
 
 const filesNeedToExclude = ["src/demo/**", "src/pluggables/Comp2.vue"];
 
@@ -46,6 +46,11 @@ export default defineConfig({
       },
     },
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  }
   // loaderOptions: {
   //   scss: {
   //     prependData: `@import "./src/styles/ids.scss";`

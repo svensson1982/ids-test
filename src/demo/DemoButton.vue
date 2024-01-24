@@ -1,33 +1,71 @@
 <template>
- <div class="demo">
+  <div class="demo">
     <h2>Buttons</h2>
-    <IdsButton v-for="(option, index) in allOptions" :key="index" :size="option.size" 
-    :variant="option.variant" :mode="option.mode" :leading-icon="BoltIcon" :trailing-icon="BeakerIcon" 
-    :id="`${option.mode}-${option.variant}-${option.size}-button`">
-      {{option.mode + ' ' + option.variant + ' ' + option.size}} button
+    <IdsButton
+      v-for="(option, index) in allOptions"
+      :key="index"
+      :size="option.size"
+      :mode="option.mode"
+      :leading-icon="BoltIcon"
+      :variant="option.variant"
+      :trailing-icon="BeakerIcon"
+      :id="`${option.mode}-${option.variant}-${option.size}-button`"
+    >
+      {{ option.mode + " " + option.variant + " " + option.size }} button
     </IdsButton>
+
+    <!-- Disabled Buttons -->
     <h2 class="pt-2">Disabled Buttons</h2>
-    <IdsButton v-for="(option, index) in allOptions" :key="index" :size="option.size"  disabled
-    :variant="option.variant" :mode="option.mode" :leading-icon="BoltIcon" :trailing-icon="BeakerIcon" 
-    :id="`${option.mode}-${option.variant}-${option.size}-button`">
-      {{option.mode + ' ' + option.variant + ' ' + option.size}} button
+    <IdsButton
+      v-for="(option, index) in allOptions"
+      :key="index"
+      :isDisabled="true"
+      :size="option.size"
+      :mode="option.mode"
+      :leading-icon="BoltIcon"
+      :variant="option.variant"
+      :trailing-icon="BeakerIcon"
+      :id="`${option.mode}-${option.variant}-${option.size}-button`"
+    >
+      {{ option.mode + " " + option.variant + " " + option.size }} button
     </IdsButton>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { BoltIcon } from '@heroicons/vue/24/solid'
-  import { BeakerIcon } from '@heroicons/vue/24/solid'
-  import IdsButton  from '../components/IdsButton.vue';
-    type ButtonOptions = {
-  mode?: "filled" | "outlined" | "text",
-  size?: "compact" | "comfortable" | "spacious",
-  variant?: "primary" | "secondary" | "brand" | "error" | "success" | "warning" | "light" | "dark",
-  };
+import { BoltIcon } from "@heroicons/vue/24/solid";
+import { BeakerIcon } from "@heroicons/vue/24/solid";
+import IdsButton from "../components/IdsButton.vue";
+type ButtonOptions = {
+  mode?: "filled" | "outlined" | "text";
+  size?: "compact" | "comfortable" | "spacious";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "brand"
+    | "error"
+    | "success"
+    | "warning"
+    | "light"
+    | "dark";
+};
 
-  const allModes: Array<ButtonOptions["mode"]> = ["filled", "outlined", "text"];
-  const allSizes: Array<ButtonOptions["size"]> = ["compact", "comfortable", "spacious"];
-  const allVariants: Array<ButtonOptions["variant"]> = ["primary", "secondary", "brand", "error", "success", "warning", "light", "dark"];
+const allModes: Array<ButtonOptions["mode"]> = ["filled", "outlined", "text"];
+const allSizes: Array<ButtonOptions["size"]> = [
+  "compact",
+  "comfortable",
+  "spacious",
+];
+const allVariants: Array<ButtonOptions["variant"]> = [
+  "primary",
+  "secondary",
+  "brand",
+  "error",
+  "success",
+  "warning",
+  "light",
+  "dark",
+];
 
 const allOptions: ButtonOptions[] = [];
 

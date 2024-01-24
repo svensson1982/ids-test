@@ -1,20 +1,32 @@
-
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive } from "vue";
 
-const props = withDefaults(defineProps<{
-  type?: "submit" | "button" | "reset",
-  mode?: "filled" | "outlined" | "text",
-  size?: "compact" | "comfortable" | "spacious",
-  variant?: "primary" | "secondary" | "brand" | "error" | "success" | "warning" | "light" | "dark",
-  leadingIcon?: Object | undefined,
-  trailingIcon?: Object | undefined,
-}>(), {
-  type: 'button',
-  mode: 'filled',
-  size: 'comfortable',
-  variant: 'primary',
-});
+const props = withDefaults(
+  defineProps<{
+    type?: "submit" | "button" | "reset";
+    mode?: "filled" | "outlined" | "text";
+    size?: "compact" | "comfortable" | "spacious";
+    variant?:
+    | "primary"
+    | "secondary"
+    | "brand"
+    | "error"
+    | "success"
+    | "warning"
+    | "light"
+    | "dark";
+    leadingIcon?: Object | undefined;
+    trailingIcon?: Object | undefined;
+    isDisabled?: boolean;
+  }>(),
+  {
+    type: "button",
+    mode: "filled",
+    isDisabled: false,
+    size: "comfortable",
+    variant: "primary",
+  },
+);
 
 const buttonStyle = reactive({
   //enabled
@@ -23,18 +35,18 @@ const buttonStyle = reactive({
   borderRadius: `var(--ids-comp-buttons-size-${props.size}-border-radius, 1000px)`,
   background: ` var(--ids-comp-buttons-${props.mode}-color-bg-${props.variant}-enabled)`,
   border: `var(--ids-comp-buttons-size-${props.size}-border, 1px) solid var(--ids-comp-buttons-${props.mode}-color-border-${props.variant}-enabled, rgba(255, 255, 255, 0.00))`,
-  
+
   //hovered
   hoverBackground: `var(--ids-comp-buttons-${props.mode}-color-bg-${props.variant}-hovered)`,
   hoverBorder: `var(--ids-comp-buttons-size-${props.size}-border, 1px) solid var(--ids-comp-buttons-${props.mode}-color-border-${props.variant}-hovered, rgba(255, 255, 255, 0.00))`,
-  
+
   //focused
   focusedBackground: `var(--ids-comp-buttons-${props.mode}-color-bg-${props.variant}-focused)`,
   focusedBorder: `var(--ids-comp-buttons-size-${props.size}-border, 1px) solid var(--ids-comp-buttons-${props.mode}-color-border-${props.variant}-focused, rgba(255, 255, 255, 0.00))`,
-  
+
   //active
   activeBackground: `var(--ids-comp-buttons-${props.mode}-color-bg-${props.variant}-pressed)`,
-  activeBorder: `var(--ids-comp-buttons-size-${props.size}-border, 1px) solid var(--ids-comp-buttons-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,  
+  activeBorder: `var(--ids-comp-buttons-size-${props.size}-border, 1px) solid var(--ids-comp-buttons-${props.mode}-color-border-${props.variant}-pressed, rgba(255, 255, 255, 0.00))`,
 
   //disabled
   disabledColor: `var(--ids-comp-buttons-${props.mode}-color-fg-${props.variant}-disabled)`,
@@ -42,17 +54,16 @@ const buttonStyle = reactive({
   disabledBorder: `var(--ids-comp-buttons-size-${props.size}-border, 1px) solid var(--ids-comp-buttons-${props.mode}-color-border-${props.variant}-disabled, rgba(255, 255, 255, 0.00))`,
 
   //icon sizes
-  iconWidth: `var(--ids-comp-buttons-size-${props.size}-icon)`,
-  iconHeight: `var(--ids-comp-buttons-size-${props.size}-icon)`,
+  iconWidthHeight: `var(--ids-comp-buttons-size-${props.size}-icon)`,
 });
-
 </script>
 
 <template>
-  <button :type="type" :class="[size, 'ids-button']">
-    <component :is="props.leadingIcon" class="icon-size"></component>
+  <button :type="type" :class="[size, 'ids-button']" :disabled="isDisabled"
+    :aria-disabled="isDisabled ? 'true' : undefined">
+    <component :is="props.leadingIcon" class="icon-size" aria-hidden="true"></component>
     <slot></slot>
-    <component :is="props.trailingIcon" class="icon-size"></component>
+    <component :is="props.trailingIcon" class="icon-size" aria-hidden="true"></component>
   </button>
 </template>
 
@@ -63,8 +74,8 @@ const buttonStyle = reactive({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: v-bind('buttonStyle.iconWidth');
-  height: v-bind('buttonStyle.iconHeight');
+  width: v-bind("buttonStyle.iconWidthHeight");
+  height: v-bind("buttonStyle.iconWidthHeight");
 }
 
 @mixin common {
@@ -106,32 +117,36 @@ const buttonStyle = reactive({
 
 //variants
 .ids-button {
-  color: v-bind('buttonStyle.color');
-  border: v-bind('buttonStyle.border');
-  opacity: v-bind('buttonStyle.opacity');
-  background: v-bind('buttonStyle.background');
-  border-radius: v-bind('buttonStyle.borderRadius'); 
+  color: v-bind("buttonStyle.color");
+  border: v-bind("buttonStyle.border");
+  opacity: v-bind("buttonStyle.opacity");
+  background: v-bind("buttonStyle.background");
+  border-radius: v-bind("buttonStyle.borderRadius");
+
   &:hover {
-    border: v-bind('buttonStyle.hoverBorder');
-    background: v-bind('buttonStyle.hoverBackground');    
+    border: v-bind("buttonStyle.hoverBorder");
+    background: v-bind("buttonStyle.hoverBackground");
   }
+
   &:focus {
     outline-offset: 2px;
-    border: v-bind('buttonStyle.focusedBorder');
-    background: v-bind('buttonStyle.focusedBackground');
+    border: v-bind("buttonStyle.focusedBorder");
+    background: v-bind("buttonStyle.focusedBackground");
     opacity: var(--ids-comp-buttons-size-spacious-border, 1);
     border-radius: var(--ids-comp-buttons-size-spacious-border-radius, 1000px);
-    outline:  var(--ids-comp-buttons-focused-outline-size-outline, 3px) solid var(--base-color-dark, rgba(0, 0, 0, 1));
+    outline: var(--ids-comp-buttons-focused-outline-size-outline, 3px) solid var(--base-color-dark, rgba(0, 0, 0, 1));
   }
+
   &:active {
-    border: v-bind('buttonStyle.activeBorder');
-    background: v-bind('buttonStyle.activeBackground');
+    border: v-bind("buttonStyle.activeBorder");
+    background: v-bind("buttonStyle.activeBackground");
     outline: none;
   }
+
   &:disabled {
-    color: v-bind('buttonStyle.disabledColor');
-    border: v-bind('buttonStyle.disabledBorder');
-    background: v-bind('buttonStyle.disabledBackground');
+    color: v-bind("buttonStyle.disabledColor");
+    border: v-bind("buttonStyle.disabledBorder");
+    background: v-bind("buttonStyle.disabledBackground");
   }
 }
 </style>

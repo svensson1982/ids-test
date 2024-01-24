@@ -1,31 +1,41 @@
-
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive } from "vue";
 
-const props = withDefaults(defineProps<{
-  type?: "vertical" | "horizontal",
-  size?: "compact" | "comfortable" | "spacious",
-  variant?: "surface" | "primary" | "secondary" | "brand" | "error" | "success" | "warning" | "light" | "dark",
-  width?: string,
-  height?: string,
-}>(), {
-  type: 'horizontal',
-  size: 'comfortable',
-  variant: 'primary',
-});
+const props = withDefaults(
+  defineProps<{
+    type?: "vertical" | "horizontal";
+    size?: "compact" | "comfortable" | "spacious";
+    variant?:
+      | "surface"
+      | "primary"
+      | "secondary"
+      | "brand"
+      | "error"
+      | "success"
+      | "warning"
+      | "light"
+      | "dark";
+    width?: string;
+    height?: string;
+  }>(),
+  {
+    type: "horizontal",
+    size: "comfortable",
+    variant: "primary",
+  },
+);
 
 const DividerStyle = reactive({
   //enabled
-  background: ` var(--ids-comp-divider-color-fg-${props.variant}-enabled)`, 
+  background: ` var(--ids-comp-divider-color-fg-${props.variant}-enabled)`,
   borderRadius: `var(--ids-comp-divider-size-${props.size}-border-radius, 0px)`,
   width: props.width,
   height: props.height,
 });
-
 </script>
 
 <template>
-  <div :class="[type, size, 'ids-divider']" ></div>
+  <div :class="[type, size, 'ids-divider']"></div>
 </template>
 
 <style scoped lang="scss">
@@ -38,7 +48,7 @@ const DividerStyle = reactive({
 //sizes
 .vertical {
   &.compact {
-  @include common;
+    @include common;
     align-self: stretch;
     width: var(--ids-comp-divider-size-compact-width, 1px);
   }
@@ -56,7 +66,7 @@ const DividerStyle = reactive({
 
 .horizontal {
   &.compact {
-  @include common;
+    @include common;
     align-self: stretch;
     height: var(--ids-comp-divider-size-compact-height, 1px);
   }
@@ -73,10 +83,9 @@ const DividerStyle = reactive({
 }
 //variants
 .ids-divider {
-  width: v-bind('DividerStyle.width');
-  height: v-bind('DividerStyle.height');
-  background: v-bind('DividerStyle.background');
-  border-radius: v-bind('DividerStyle.borderRadius'); 
+  width: v-bind("DividerStyle.width");
+  height: v-bind("DividerStyle.height");
+  background: v-bind("DividerStyle.background");
+  border-radius: v-bind("DividerStyle.borderRadius");
 }
-
 </style>
