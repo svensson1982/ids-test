@@ -5,6 +5,9 @@
     <button @click="showComponent(Chip)">Chips Component</button>
     <button @click="showComponent(Divider)">Divider Component</button>
     <button @click="showComponent(Avatar)">Avatar Component</button>
+    <button @click="showComponent(ActionItemButton)">
+      ActionItemButton Component
+    </button>
   </nav>
   <section>
     <component :is="currentComponent" />
@@ -36,6 +39,7 @@ import Avatar from "./DemoAvatar.vue";
 import Button from "./DemoButton.vue";
 import Divider from "./DemoDivider.vue";
 import IconButton from "./DemoIconButton.vue";
+import ActionItemButton from "./DemoActionItemButton.vue";
 
 const currentComponent = shallowRef(Button);
 

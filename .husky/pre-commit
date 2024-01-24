@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-#npx run lint -- --fix
+npm run lint -- --fix
 #npx vue-cli-service lint --fix
-#git add .
+git add .
 #npx pretty-quick --branch main
 #git add .
 

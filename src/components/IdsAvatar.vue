@@ -16,8 +16,9 @@ const props = withDefaults(
 const avatarStyle = reactive({
   //enabled
   color: `var(--ids-comp-avatar-color-fg-${props.variant}-enabled)`,
-  borderRadius: `var(--ids-comp-avatar-size-spacious-border-radius, 62.5rem)`,
   background: ` var(--ids-comp-avatar-color-bg-${props.variant}-enabled)`,
+  borderRadius: `var(--ids-comp-avatar-size-spacious-border-radius, 62.5rem)`,
+  padding: `var(--ids-comp-avatar-size-${props.size}-padding-y) var(--ids-comp-avatar-size-${props.size}-padding-x)`,
   border: `var(--ids-comp-avatar-size-${props.size}-border, 1px) solid var(--ids-comp-avatar-color-border-${props.variant}-enabled, rgba(255, 255, 255, 0.00))`,
 
   //hovered
@@ -35,9 +36,7 @@ const avatarStyle = reactive({
   //image sizes
   width: `var(--ids-comp-avatar-size-${props.size}-width)`,
   height: `var(--ids-comp-avatar-size-${props.size}-height)`,
-  iconPadding: `var(--ids-comp-avatar-size-${props.size}-padding-y) var(--ids-comp-avatar-size-${props.size}-padding-x)`,
   iconColor: `var(--ids-comp-avatar-color-fg-${props.variant}-enabled)`,
-
 });
 </script>
 
@@ -46,25 +45,41 @@ const avatarStyle = reactive({
     <slot v-if="$slots.default"></slot>
     <div v-else>
       <img v-if="image" :src="image" class="img-size" />
-      <svg v-else width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"
-        class="icon-size">
-        <mask id="mask0_3222_9853" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7" y="5" width="38" height="47">
-          <path fill-rule="evenodd" clip-rule="evenodd"
+      <svg
+        v-else
+        width="52"
+        height="52"
+        viewBox="0 0 52 52"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon-size"
+      >
+        <mask
+          id="mask0_3222_9853"
+          style="mask-type: alpha"
+          maskUnits="userSpaceOnUse"
+          x="7"
+          y="5"
+          width="38"
+          height="47"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
             d="M7.79999 44.3943C12.0726 39.0451 18.6378 35.6199 26 35.6199C33.3622 35.6199 39.9274 39.0451 44.2 44.3943C39.554 49.0914 33.1154 52 26 52C18.8846 52 12.446 49.0914 7.79999 44.3943ZM37.6569 16.9C37.6569 23.3617 32.4379 28.6 26 28.6C19.562 28.6 14.343 23.3617 14.343 16.9C14.343 10.4382 19.562 5.19995 26 5.19995C32.4379 5.19995 37.6569 10.4382 37.6569 16.9Z"
-            :fill="avatarStyle.iconColor" />
+            :fill="avatarStyle.iconColor"
+          />
         </mask>
         <g mask="url(#mask0_3222_9853)">
           <rect width="52" height="52" fill="currentColor" />
         </g>
       </svg>
-      <!-- <img  src="@/assets/icons/user-avatar.svg" class="icon-size" alt="User Icon" /> -->
     </div>
   </button>
 </template>
 
 <style scoped lang="scss">
 @mixin common {
-  padding: 5px;
   display: flex;
   font-style: normal;
   text-align: center;
@@ -82,11 +97,6 @@ const avatarStyle = reactive({
   flex-direction: column;
   width: 100%; // v-bind('avatarStyle.width');
   height: 100%; //v-bind('avatarStyle.height');
-}
-
-//icon padding
-.icon-padding {
-  padding: v-bind("avatarStyle.iconPadding");
 }
 
 //image size
@@ -135,6 +145,7 @@ const avatarStyle = reactive({
 .ids-button {
   color: v-bind("avatarStyle.color");
   border: v-bind("avatarStyle.border");
+  padding: v-bind("avatarStyle.padding");
   background: v-bind("avatarStyle.background");
   border-radius: v-bind("avatarStyle.borderRadius");
 
@@ -149,13 +160,14 @@ const avatarStyle = reactive({
     background: v-bind("avatarStyle.focusedBackground");
     opacity: var(--ids-comp-buttons-size-spacious-border, 1);
     border-radius: var(--ids-comp-buttons-size-spacious-border-radius, 1000px);
-    outline: var(--ids-comp-buttons-focused-outline-size-outline, 3px) solid var(--base-color-dark, rgba(0, 0, 0, 1));
+    outline: var(--ids-comp-buttons-focused-outline-size-outline, 3px) solid
+      var(--base-color-dark, rgba(0, 0, 0, 1));
   }
 
   &:active {
+    outline: none;
     border: v-bind("avatarStyle.activeBorder");
     background: v-bind("avatarStyle.activeBackground");
-    outline: none;
   }
 }
 </style>
